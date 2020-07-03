@@ -4,14 +4,10 @@
 
 tl;dr. Enable virtual background in Linux (tested with Ubuntu 20.04, Nvidia GeForce 940MX, and a crappy web cam).
 
-Check out @BenTheElder's post in the reference section for a !tl;dr.
-
-## *** Credit goes to original author Benjamin Elder @BenTheElder ***
-
-# reference
-
+Check out @BenTheElder's post for a !tl;dr.
 https://elder.dev/posts/open-source-virtual-background/
 
+## *** Credit goes to Benjamin Elder @BenTheElder, the original author! ***
 
 # installation
 
@@ -33,9 +29,9 @@ sudo modprobe -r v4l2loopback
 sudo modprobe v4l2loopback devices=1 video_nr=20 card_label="v4l2loopback" exclusive_caps=1
 ```
 
-+ add root to group video
++ add root to group video (optional...)
 ```
-sudo usermod -aG video $USER
+sudo usermod -aG video root
 cat /etc/group | grep video
 ```
 
@@ -77,5 +73,8 @@ docker run   --name=bodypix   --network=fakecam   -p 9000:9000   --gpus=all --sh
 docker run  --name=fakecam   --network=fakecam  $(find /dev -name 'video*' -printf "--device %p ") -v ${PWD}/fakecam:/src -it fakecam /bin/bash
 ```
 
+# reference
+
+https://elder.dev/posts/open-source-virtual-background/
 
 

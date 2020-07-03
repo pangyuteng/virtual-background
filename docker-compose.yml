@@ -9,6 +9,8 @@ services:
     ports:
       - 9000:9000
     command: node /src/app.js
+    devices:
+      - /dev/nvidia0:/dev/nvidia0
   fakecam:
     build:
       context: ./fakecam
@@ -23,8 +25,8 @@ services:
       FAKE_CAMERA: "/dev/video20"
       CAMERA_WIDTH: "640"
       CAMERA_HEIGHT: "360"
-      # CAMERA_WIDTH: "1280"
-      # CAMERA_HEIGHT: "720"
+      #CAMERA_WIDTH: "1280"
+      #CAMERA_HEIGHT: "720"
       CAMERA_FPS: "24"
     volumes:
         - ${PWD}/data:/data
