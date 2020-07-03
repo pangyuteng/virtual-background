@@ -39,6 +39,12 @@ sudo usermod -aG video $USER
 cat /etc/group | grep video
 ```
 
++ clone repo
+```
+git clone git@github.com:pangyuteng/virtual-background.git vbkgd
+cd vbkgd
+```
+
 + build via docker-compose
 ```
 docker-compose build
