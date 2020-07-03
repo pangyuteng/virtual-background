@@ -31,27 +31,35 @@ sudo modprobe -r v4l2loopback
 sudo modprobe v4l2loopback devices=1 video_nr=20 card_label="v4l2loopback" exclusive_caps=1
 ```
 
-+ build docker
-```
-docker build -t bodypix ./bodypix
-docker build -t fakecam ./fakecam
-```
-
 + add root to group video
 ```
 sudo usermod -aG video $USER
 cat /etc/group | grep video
 ```
 
-+ run 
++ build via docker-compose
 ```
-docker run -d  --name=bodypix   --network=fakecam   -p 9000:9000   --gpus=all --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864 bodypix
-docker run -d --name=fakecam   --network=fakecam  $(find /dev -name 'video*' -printf "--device %p ") -v ${PWD}:/src fakecam 
+
+docker-compose build
+```
+
++ start the fake camera via docker-compose
+```
+docker-compose up
+
 ```
 
 + launch zooms, select v4l2loopback as webcam
 
+
 # DEV
+
++ build docker
+```
+docker build -t bodypix ./bodypix
+docker build -t fakecam ./fakecam
+```
+
 + dev mode, remove entrypoint from Dockerfile, rebuild and run below to edit code
 ```
 # in terminal 

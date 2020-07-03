@@ -17,8 +17,8 @@ def get_mask(frame, bodypix_url='http://bodypix:9000'):
     return mask
 
 def post_process_mask(mask):
-    mask = cv2.dilate(mask, np.ones((10,10), np.uint8) , iterations=1)
-    mask = cv2.blur(mask.astype(float), (30,30))
+    mask = cv2.dilate(mask, np.ones((5,5), np.uint8) , iterations=1)
+    mask = cv2.blur(mask.astype(float), (15,15))
     return mask
 
 def shift_image(img, dx, dy):
@@ -63,30 +63,39 @@ def get_frame(cap, background_scaled):
             time.sleep(5)
     # post-process mask and frame
     mask = post_process_mask(mask)
-    frame = hologram_effect(frame)
+    
+    #frame = hologram_effect(frame)
     # composite the foreground and background
     inv_mask = 1-mask
     for c in range(frame.shape[2]):
         frame[:,:,c] = frame[:,:,c]*mask + background_scaled[:,:,c]*inv_mask
     return frame
 
-# setup access to the *real* webcam
-cap = cv2.VideoCapture('/dev/video0')
-height, width = 540,960
-cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
-cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
-cap.set(cv2.CAP_PROP_FPS, 24)
+if __name__ == '__main__':
 
-# setup the fake camera
-fake = pyfakewebcam.FakeWebcam('/dev/video20', width, height)
+    actual_device = os.environ.get('ACTUAL_CAMERA','/dev/video0')
+    fake_device = os.environ.get('FAKE_CAMERA','/dev/video20')
+    width = int(os.environ.get('CAMERA_WIDTH',360))
+    height = int(os.environ.get('CAMERA_HEIGHT',640))
+    cam_fps = int(os.environ.get('CAMERA_FPS',24))
 
-# load the virtual background
-background = cv2.imread("/data/background.jpg")
-background_scaled = cv2.resize(background, (width, height))
+    # setup access to the *real* webcam
+    cap = cv2.VideoCapture(actual_device)
+    
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
+    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
+    cap.set(cv2.CAP_PROP_FPS, cam_fps)
 
-# frames forever
-while True:
-    frame = get_frame(cap, background_scaled)
-    # fake webcam expects RGB
-    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-    fake.schedule_frame(frame)
+    # setup the fake camera
+    fake = pyfakewebcam.FakeWebcam(fake_device, width, height)
+
+    # load the virtual background
+    background = cv2.imread("/data/background.jpg")
+    background_scaled = cv2.resize(background, (width, height))
+
+    # frames forever
+    while True:
+        frame = get_frame(cap, background_scaled)
+        # fake webcam expects RGB
+        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        fake.schedule_frame(frame)

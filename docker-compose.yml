@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+  bodypix:
+    build:
+      context: ./bodypix
+      dockerfile: ${PWD}/bodypix/Dockerfile
+    image: bodypix
+    restart: always
+    ports:
+      - 9000:9000
+    command: node /src/app.js
+  fakecam:
+    build:
+      context: ./fakecam
+      dockerfile: ${PWD}/fakecam/Dockerfile
+    image: fakecam
+    restart: always
+    links:
+        - bodypix
+    command: python fake.py
+    environment:
+      ACTUAL_CAMERA: "/dev/video0"
+      FAKE_CAMERA: "/dev/video20"
+      CAMERA_WIDTH: "320"
+      CAMERA_HEIGHT: "240"
+      CAMERA_FPS: "24"
+    devices:
+        - "/dev/video0:/dev/video0"
+        - "/dev/video20:/dev/video20"
+networks:
+  fakecam:
+    driver: bridge
