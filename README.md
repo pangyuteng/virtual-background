@@ -47,7 +47,6 @@ docker-compose build
 + start the virtual camera via docker-compose
 ```
 docker-compose up
-
 ```
 
 + launch zoom/teams/slack..., select `v4l2loopback` as webcam
