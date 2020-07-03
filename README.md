@@ -3,6 +3,7 @@
 
 https://elder.dev/posts/open-source-virtual-background/
 
+## *** Credit goes to original author Benjamin Elder @BenTheElder ***
 
 # installation
 
