@@ -84,7 +84,6 @@ def get_frame(cap, background_scaled, speed=True):
 
 if __name__ == '__main__':
 
-
     actual_device = os.environ.get('ACTUAL_CAMERA','/dev/video0')
     fake_device = os.environ.get('FAKE_CAMERA','/dev/video20')
     width = int(os.environ.get('CAMERA_WIDTH',640))
