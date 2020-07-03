@@ -13,6 +13,9 @@ https://elder.dev/posts/open-source-virtual-background
 Also check out a cpu-friendly derivation by fangfufu.
 https://github.com/fangfufu/Linux-Fake-Background-Webcam
 
+Finally, for those interested in the underlying bodypix. Here is a detailed blog post on this amazing open source library, there is even a live demo page!
+https://blog.tensorflow.org/2019/11/updated-bodypix-2.html
+
 ## *** Credit goes to Benjamin Elder @BenTheElder, the original author! ***
 
 # installation
