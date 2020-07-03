@@ -19,7 +19,7 @@ https://github.com/fangfufu/Linux-Fake-Background-Webcam
 Finally, for those interested in the underlying bodypix. Here is a detailed blog post on this amazing open source library, there is even a live demo page!
 https://blog.tensorflow.org/2019/11/updated-bodypix-2.html
 
-If you just want a tl;dr... we grab image frames from the physical camera with OpenCV.  For each image, the face/body is cropped with a pretrained neural net via TensorFlow.js Bodypix, and merged with a specified background image.  The merged images are then continously generated and used to create a video feed via pyfakewebcam and v4l2loopback.  The implementation is dockerized to 2 containers, with the `bodypix` container handling the body detection, while the `fakecam` container handles the rest of the image processing, and also interfacing with the physical and virtual camera devices.
+If you just want a tl;dr... we grab image frames from the physical camera with OpenCV.  For each image, the face/body is cropped with a pretrained neural net via TensorFlow.js Bodypix, and merged with a specified background image.  The merged images are then continuously generated and used to create a video feed via pyfakewebcam and v4l2loopback.  The implementation is dockerized to 2 containers, with the `bodypix` container handling the body detection, while the `fakecam` container handles the rest of the image processing, and also interfacing with the physical and virtual camera devices.
 
 --
 
