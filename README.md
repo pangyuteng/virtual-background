@@ -17,7 +17,8 @@ curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.li
 sudo apt-get update && sudo apt-get install -y nvidia-container-toolkit
 sudo systemctl restart docker
 ```
-test nvidia-docker 
+
++ test nvidia-docker is install properly
 ```
 docker run --gpus all nvidia/cuda:10.0-base nvidia-smi
 ```
@@ -39,7 +40,6 @@ cat /etc/group | grep video
 
 + build via docker-compose
 ```
-
 docker-compose build
 ```
 
