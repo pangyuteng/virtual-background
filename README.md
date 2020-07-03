@@ -1,11 +1,17 @@
-
+```
+this repo is created as an answer for 
+https://askubuntu.com/questions/1228501/how-can-i-choose-the-zoom-virtual-background-feature-using-ubuntu/1255945#1255945
+```
 
 # summary
 
 tl;dr. Enable virtual background in Linux (tested with Ubuntu 20.04, Nvidia GeForce 940MX, and a crappy web cam).
 
 Check out @BenTheElder's post for a !tl;dr.
-https://elder.dev/posts/open-source-virtual-background/
+https://elder.dev/posts/open-source-virtual-background
+
+Also check out a cpu-friendly derivation by fangfufu.
+https://github.com/fangfufu/Linux-Fake-Background-Webcam
 
 ## *** Credit goes to Benjamin Elder @BenTheElder, the original author! ***
 
