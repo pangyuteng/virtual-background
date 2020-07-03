@@ -59,7 +59,9 @@ docker-compose up
 
 ```
 
-+ launch zooms, select v4l2loopback as webcam
++ launch zoom/teams/slack..., select v4l2loopback as webcam
+
++ live swap background by replacing file `data/background.jpg` - refresh rate hard coded at 3 seconds.
 
 
 # development
