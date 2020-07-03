@@ -9,8 +9,6 @@ services:
     ports:
       - 9000:9000
     command: node /src/app.js
-    devices:
-      - /dev/nvidia0:/dev/nvidia0
   fakecam:
     build:
       context: ./fakecam

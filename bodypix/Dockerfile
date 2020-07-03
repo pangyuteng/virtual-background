@@ -1,7 +1,4 @@
-# Base image with TensorFlow GPU requirements
-#FROM nvcr.io/nvidia/cuda:10.0-cudnn7-runtime-ubuntu18.04
-#FROM nvidia/cuda:10.2-cudnn7-runtime-ubuntu18.04
-FROM nvidia/cuda:10.2-runtime-ubuntu18.04
+FROM ubuntu:18.04
 # Install node
 RUN apt update && apt install -y curl make build-essential \
     && curl -sL https://deb.nodesource.com/setup_12.x | bash - \
