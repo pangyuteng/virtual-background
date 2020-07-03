@@ -24,7 +24,7 @@ sudo systemctl restart docker
 docker run --gpus all nvidia/cuda:10.0-base nvidia-smi
 ```
 
-+ install and setup cam emulator
++ install and setup virtual video device as "/dev/video20", and assuming the actual video device is "/dev/video0"
 ``` 
 sudo apt-get upgrad -y
 sudo apt-get install -y v4l2loopback-dkms v4l2loopback-utils
