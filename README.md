@@ -1,9 +1,18 @@
 
+
+# summary
+
+Enable virtual background in Linux (tested with Ubuntu 20.04, Nvidia GeForce 940MX)
+
+so you can also participate in playing with 
+
+## *** Credit goes to original author Benjamin Elder @BenTheElder ***
+
+
 # reference
 
 https://elder.dev/posts/open-source-virtual-background/
 
-## *** Credit goes to original author Benjamin Elder @BenTheElder ***
 
 # installation
 

@@ -17,8 +17,8 @@ def get_mask(frame, bodypix_url='http://bodypix:9000'):
     return mask
 
 def post_process_mask(mask):
-    mask = cv2.dilate(mask, np.ones((5,5), np.uint8) , iterations=1)
-    mask = cv2.blur(mask.astype(float), (15,15))
+    mask = cv2.dilate(mask, np.ones((10,10), np.uint8) , iterations=1)
+    mask = cv2.blur(mask.astype(float), (10,10))
     return mask
 
 def shift_image(img, dx, dy):
@@ -49,34 +49,46 @@ def hologram_effect(img):
     out = cv2.addWeighted(img, 0.5, holo_blur, 0.6, 0)
     return out
 
-def get_frame(cap, background_scaled):
+def get_frame(cap, background_scaled, speed=True):
     _, frame = cap.read()
     # fetch the mask with retries (the app needs to warmup and we're lazy)
     # e v e n t u a l l y c o n s i s t e n t
     mask = None
     while mask is None:
         try:
-            mask = get_mask(frame)
+
+            if speed:
+                shrinked_frame = cv2.resize(frame, (width//2, height//2)) 
+                shrinked_mask = get_mask(shrinked_frame)
+                mask = cv2.resize(shrinked_mask, (width, height))
+            else:
+                mask = get_mask(frame)
+
         except requests.RequestException:
             print("mask request failed, retrying")
             traceback.print_exc()
             time.sleep(5)
+    
     # post-process mask and frame
     mask = post_process_mask(mask)
-    
     #frame = hologram_effect(frame)
+
     # composite the foreground and background
     inv_mask = 1-mask
     for c in range(frame.shape[2]):
-        frame[:,:,c] = frame[:,:,c]*mask + background_scaled[:,:,c]*inv_mask
+       frame[:,:,c] = frame[:,:,c]*mask + background_scaled[:,:,c]*inv_mask
+
+
     return frame
+
 
 if __name__ == '__main__':
 
+
     actual_device = os.environ.get('ACTUAL_CAMERA','/dev/video0')
     fake_device = os.environ.get('FAKE_CAMERA','/dev/video20')
-    width = int(os.environ.get('CAMERA_WIDTH',360))
-    height = int(os.environ.get('CAMERA_HEIGHT',640))
+    width = int(os.environ.get('CAMERA_WIDTH',640))
+    height = int(os.environ.get('CAMERA_HEIGHT',360))
     cam_fps = int(os.environ.get('CAMERA_FPS',24))
 
     # setup access to the *real* webcam
@@ -90,12 +102,23 @@ if __name__ == '__main__':
     fake = pyfakewebcam.FakeWebcam(fake_device, width, height)
 
     # load the virtual background
-    background = cv2.imread("/data/background.jpg")
+    background_file_path = "/data/background.jpg"
+    background = cv2.imread(background_file_path)
     background_scaled = cv2.resize(background, (width, height))
+
+    org_background_file_size = os.stat(background_file_path).st_size
 
     # frames forever
     while True:
+
         frame = get_frame(cap, background_scaled)
         # fake webcam expects RGB
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         fake.schedule_frame(frame)
+
+        if int(time.time()) % 3 == 0:
+            updated_background_file_size = os.stat(background_file_path).st_size
+            if updated_background_file_size != org_background_file_size:
+                background = cv2.imread(background_file_path)
+                background_scaled = cv2.resize(background,(width, height))
+                org_background_file_size = updated_background_file_size
