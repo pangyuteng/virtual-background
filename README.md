@@ -1,5 +1,5 @@
 ```
-this repo is created as an answer for 
+this repo was created as part of an answer for 
 https://askubuntu.com/questions/1228501/how-can-i-choose-the-zoom-virtual-background-feature-using-ubuntu/1255945#1255945
 ```
 
