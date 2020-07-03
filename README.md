@@ -29,7 +29,7 @@ sudo modprobe -r v4l2loopback
 sudo modprobe v4l2loopback devices=1 video_nr=20 card_label="v4l2loopback" exclusive_caps=1
 ```
 
-+ add root to group video (optional...)
++ add root to group video (likely unecessary...)
 ```
 sudo usermod -aG video root
 cat /etc/group | grep video
@@ -46,7 +46,7 @@ cd vbkgd
 docker-compose build
 ```
 
-+ start the virtual camera via docker-compose
++ start the virtual camera via docker-compose (assuming gpu is present at `/dev/nvidia0`, physical video device at `/dev/video0` and virtual video device at `/dev/video20`)
 ```
 docker-compose up
 ```
