@@ -1,6 +1,16 @@
 ```
 this repo was created as part of an answer for 
 https://askubuntu.com/questions/1228501/how-can-i-choose-the-zoom-virtual-background-feature-using-ubuntu/1255945#1255945
+
+original solution is published by Ben Elder via below link.
+https://elder.dev/posts/open-source-virtual-background
+
+modifications made are listed below.
++ tweaked installation steps to allow softwares to work in my environment.
++ added docker-compose file.
++ updated code to obtain environment variables defined in docker-compose file.
++ updated code to monitor folder to live switch background.
+
 ```
 
 # summary
