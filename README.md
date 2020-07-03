@@ -52,7 +52,7 @@ docker-compose up
 + launch zooms, select v4l2loopback as webcam
 
 
-# DEV
+# development
 
 + build docker
 ```
