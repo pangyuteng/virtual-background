@@ -41,7 +41,7 @@ If you have not yet gone through the above links and just want to know a bit of 
 
 + install docker (https://docs.docker.com/engine/install/ubuntu)
 
-+ (skip if you have no GPU) install nvidia-docker (https://github.com/NVIDIA/nvidia-docker)
++ (skip if you have no GPU) install nvidia-docker (https://github.com/NVIDIA/nvidia-docker), and `sudo apt install nvidia-container-runtime`
 
 + (skip if you have no GPU) test nvidia-docker is install properly
 ```

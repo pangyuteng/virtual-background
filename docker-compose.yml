@@ -1,6 +1,7 @@
-version: "3.8"
+version: "2.3"
 services:
   bodypix:
+    runtime: nvidia
     build:
       context: ./bodypix
       dockerfile: ${PWD}/bodypix/Dockerfile
