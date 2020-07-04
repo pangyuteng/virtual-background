@@ -29,6 +29,7 @@ services:
       #CAMERA_WIDTH: "1280"
       #CAMERA_HEIGHT: "720"
       CAMERA_FPS: "24"
+      BODYPIX_URL: http://bodypix:9000
     volumes:
         - ${PWD}/data:/data
     devices:
