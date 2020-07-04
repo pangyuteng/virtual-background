@@ -6,7 +6,7 @@ import pyfakewebcam
 import traceback
 import time
 
-def get_mask(frame, bodypix_url=os.environget("BODYPIX_URL","http://bodypix:9000")):
+def get_mask(frame, bodypix_url=os.environment("BODYPIX_URL","http://bodypix:9000")):
     _, data = cv2.imencode(".jpg", frame)
     r = requests.post(
         url=bodypix_url,
