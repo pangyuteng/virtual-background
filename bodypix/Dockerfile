@@ -1,6 +1,6 @@
 # Base image with TensorFlow GPU requirements
-#FROM nvcr.io/nvidia/cuda:10.0-cudnn7-runtime-ubuntu18.04
-FROM tensorflow/tensorflow:1.15.2-gpu-py3
+FROM nvcr.io/nvidia/cuda:10.0-cudnn7-runtime-ubuntu18.04
+#FROM tensorflow/tensorflow:1.15.2-gpu-py3
 
 # Install node
 RUN apt update && apt install -y curl make build-essential \
