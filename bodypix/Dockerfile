@@ -19,6 +19,6 @@ COPY app.js /src/
 
 # Ensure we can get enough GPU memory
 # Unfortunately tfjs-node-gpu exposes no gpu configuration :(
-#ENV TF_FORCE_GPU_ALLOW_GROWTH=true
+ENV TF_FORCE_GPU_ALLOW_GROWTH=true
 
 ENTRYPOINT node /src/app.js
