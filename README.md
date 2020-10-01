@@ -87,6 +87,10 @@ docker-compose build
 docker-compose up
 ```
 
+If this doesn't work and you get something like
+`ERROR: for vbkgd_bodypix_1  Cannot create container for service bodypix: Unknown runtime specified nvidia`
+do the steps described [here](https://github.com/NVIDIA/nvidia-docker/issues/1073#issuecomment-532104398) and restart using `docker-compose up`
+
 + launch zoom/teams/slack..., select `v4l2loopback` as webcam
 
 + live swap background by replacing file `data/background.jpg` - refresh rate hard coded at 3 seconds.
