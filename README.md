@@ -78,6 +78,10 @@ cd vbkgd
 ```
 
 + build via docker-compose
+
+Open `docker-compose.yml` and replace `${PWD}` with your current working directory (on linux check `pwd`)
+
+Run
 ```
 docker-compose build
 ```
