@@ -16,7 +16,7 @@ Listing below due to CC By 4.0 licensing agreement.
 
 # summary
 
-Follow the steps in section `instuctions` to enable virtual background in Linux during your zoom/teams/slack meetings.
+Follow the steps in section `instructions` to enable virtual background in Linux during your zoom/teams/slack meetings.
 
 + branch `master` is tested with Ubuntu 20.04, Nvidia GeForce 940MX, and a crappy web cam.
 + branch `cpu-friendly` is tested with Ubuntu 20.04 and no gpu.
