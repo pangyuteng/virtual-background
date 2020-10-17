@@ -50,13 +50,13 @@ docker run --gpus all nvidia/cuda:10.0-base nvidia-smi
 
 + install v4l2loopback
 ``` 
-sudo apt-get upgrade -y
+sudo apt-get upgrade -y ;\
 sudo apt-get install -y v4l2loopback-dkms v4l2loopback-utils
 ```
 
 + setup virtual video device as `/dev/video20`, and assuming the actual video device is `/dev/video0`. (for me, `/dev/video20` disappears after reboot, so these commands need to be run on boot if you want this device to always appear).
 ```
-sudo modprobe -r v4l2loopback
+sudo modprobe -r v4l2loopback ;\
 sudo modprobe v4l2loopback devices=1 video_nr=20 card_label="v4l2loopback" exclusive_caps=1
 ```
 
@@ -67,7 +67,7 @@ find /dev -name 'video*'
 
 + add root to group video (likely unecessary...)
 ```
-sudo usermod -aG video root
+sudo usermod -aG video root ;\
 cat /etc/group | grep video
 ```
 

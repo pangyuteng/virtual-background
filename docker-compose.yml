@@ -4,7 +4,7 @@ services:
     runtime: nvidia
     build:
       context: ./bodypix
-      dockerfile: ${PWD}/bodypix/Dockerfile
+      dockerfile: Dockerfile
     image: bodypix
     restart: always
     ports:
@@ -15,7 +15,7 @@ services:
   fakecam:
     build:
       context: ./fakecam
-      dockerfile: ${PWD}/fakecam/Dockerfile
+      dockerfile: Dockerfile
     image: fakecam
     restart: always
     links:
@@ -31,7 +31,7 @@ services:
       CAMERA_FPS: "24"
       BODYPIX_URL: http://bodypix:9000
     volumes:
-        - ${PWD}/data:/data
+        - ./data:/data
     devices:
         - "/dev/video0:/dev/video0"
         - "/dev/video20:/dev/video20"
