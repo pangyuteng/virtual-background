@@ -1,7 +1,6 @@
 version: "2.3"
 services:
   bodypix:
-    runtime: nvidia
     build:
       context: ./bodypix
       dockerfile: Dockerfile

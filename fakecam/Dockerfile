@@ -7,7 +7,7 @@ RUN apt-get update && \
       `# opencv requirements` \
       libsm6 libxext6 libxrender-dev \
       `# opencv video opening requirements` \
-      libv4l-dev
+      libv4l-dev libgl1-mesa-glx
 # install our requirements
 WORKDIR /src
 COPY requirements.txt /src/
