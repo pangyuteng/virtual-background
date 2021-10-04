@@ -1,3 +1,8 @@
+
+## EDIT 2021-10-04: 
+## *** Virtual Background working in Zoom v5.8.0 (tested in Ubuntu 18.04)! ***
+
+-- 
 ```
 this repo was created as part of an answer for 
 https://askubuntu.com/questions/1228501/how-can-i-choose-the-zoom-virtual-background-feature-using-ubuntu/1255945#1255945
