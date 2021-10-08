@@ -1,10 +1,10 @@
 
 #
 
-#### EDIT 2021-10-04: *** Virtual Background working in Zoom v5.8.0 (tested in Ubuntu 18.04)! ***
+#### EDIT 2021-10-08: *** Virtual Background working in Zoom v5.8.0 (tested in Ubuntu 18.04)! ***
 
 #
--- 
+--
 
 
 ```
